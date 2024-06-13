@@ -1,0 +1,6 @@
+[
+  { "id": 0, "name": "송동선", "party": 1, "constituency": "대구" },
+  { "id": 1, "name": "이지현", "party": 2, "constituency": "구리" },
+  { "id": 2, "name": "최수민", "party": 3, "constituency": "청주" },
+  { "id": 3, "name": "빌궁", "party": 4, "constituency": "몽골" }
+]

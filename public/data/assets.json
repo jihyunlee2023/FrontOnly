@@ -1,0 +1,43 @@
+[
+    {
+      "id": 0,
+      "assets": {
+        "total": 2500000,
+        "realEstate": 1800000,
+        "securities": 400000,
+        "deposits": 200000,
+        "usageRights": 100000
+      }
+    },
+    {
+      "id": 1,
+      "assets": {
+        "total": 1200000,
+        "realEstate": 800000,
+        "securities": 200000,
+        "deposits": 150000,
+        "usageRights": 50000
+      }
+    },
+    {
+      "id": 2,
+      "assets": {
+        "total": 3000000,
+        "realEstate": 2000000,
+        "securities": 600000,
+        "deposits": 300000,
+        "usageRights": 100000
+      }
+    },
+    {
+      "id": 3,
+      "assets": {
+        "total": 5000000,
+        "realEstate": 3000000,
+        "securities": 1000000,
+        "deposits": 500000,
+        "usageRights": 1000000
+      }
+    }
+  ]
+  
