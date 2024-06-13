@@ -88,9 +88,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 National Assembly
               </Link>
               <div className="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-2 dark:border-gray-800">
-                <div>출석률</div>
-                <div>법안발의</div>
-                <div>재산</div>
+              <a href="http://localhost:3000/attendance"><div>출석률</div></a>
+              <a href="http://localhost:3000/law"><div>법안발의</div></a>
+              <a href="http://localhost:3000/assets"><div>재산</div></a>
               </div>
             </div>
             <div className="flex items-center gap-4">
