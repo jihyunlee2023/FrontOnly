@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -60,9 +59,13 @@ export default function Page() {
   }));
 
   return (
-    <div className="flex flex-col items-center justify-center gap-8 px-6 md:px-10 py-12">
-      <div className="flex flex-col items-center gap-4">
-      <img src="https://www.assembly.go.kr/static/portal/img/bon_meeting.jpg" alt="New Image" className="rounded-lg w-full h-auto max-w-screen-md object-cover" />
+    <div className="flex flex-col items-center justify-center gap-8 px-6 md:px-10 py-12 w-full">
+      <div className="relative w-full">
+        <img 
+          src="https://images.unsplash.com/photo-1520452112805-c6692c840af0?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUVBJUI1JUFEJUVEJTlBJThDfGVufDB8fDB8fHww" 
+          alt="New Image" 
+          className="w-full h-[350px] object-cover filter saturate-45" 
+        />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         <Card>
@@ -94,7 +97,7 @@ export default function Page() {
             </CardHeader>
             <CardContent>
               <BarChart className="aspect-[4/3]" />
-              <h4 className="text-right" style={{ paddingRight: '10pt' }}>Click to View More &gt; </h4> 
+              <h4 className="text-right mt-4" style={{ paddingRight: '10pt' }}>Click to View More &gt; </h4> 
             </CardContent>
           </Link>
         </Card>
