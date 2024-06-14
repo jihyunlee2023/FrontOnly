@@ -10,6 +10,8 @@ export default function Asset() {
   const [members, setMembers] = useState([])
   const [assets, setAssets] = useState([])
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
+  const [sortOrder, setSortOrder] = useState("정렬");
 
   const filters = [
     { label: "Total Assets", value: "total" },
@@ -65,6 +67,11 @@ export default function Asset() {
     setIsMenuOpen(false); // 메뉴를 닫음
   };
 
+  const handleSortClick = (order) => {
+    setSortOrder(order);
+    setIsSortMenuOpen(false); // 정렬 메뉴를 닫음
+  };
+
   const getFilterLabel = (value) => {
     const filter = filters.find((filter) => filter.value === value);
     return filter ? filter.label : "Total Assets";
@@ -73,14 +80,11 @@ export default function Asset() {
   return (
     <div className="p-4">
       <Party />
-      <div 
-  className="flex justify-between w-40 max-w-xl ml-28 mb-3 relative"
-  onMouseEnter={() => setIsMenuOpen(true)}
-  onMouseLeave={() => setIsMenuOpen(false)}
->
+      <div className="flex justify-between w-40 max-w-xl ml-32 mb-3 relative">
         <Button
-          className="bg-black text-white px-6 py-2"
+          className="bg-black text-white px-6 py-2 w-32 h-10"
           variant={isMenuOpen ? "default" : "outline"}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {getFilterLabel(selectedFilter)}
         </Button>
@@ -97,6 +101,31 @@ export default function Asset() {
                 {filter.label}
               </div>
             ))}
+          </div>
+        )}
+        {/* 두 번째 버튼 */}
+        <Button
+          className="bg-black text-white px-6 py-2 w-32 h-10 ml-2"
+          onClick={() => setIsSortMenuOpen(!isSortMenuOpen)}
+        >
+          {sortOrder}
+        </Button>
+        {isSortMenuOpen && (
+          <div 
+            className="absolute top-full left-32 w-28 bg-white border border-gray-200 rounded-md shadow-lg z-10"
+          >
+            <div
+              onClick={() => handleSortClick('오름차순')}
+              className="cursor-pointer px-4 py-2 hover:bg-gray-100"
+            >
+              오름차순
+            </div>
+            <div
+              onClick={() => handleSortClick('내림차순')}
+              className="cursor-pointer px-4 py-2 hover:bg-gray-100"
+            >
+              내림차순
+            </div>
           </div>
         )}
       </div>
