@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <FaEye className="w-10 h-10 mr-3" />
                 National Assembly
               </Link>
-              <div className="flex items-center gap-2.5 border border-gray-100 rounded-xl px-4 py-2 dark:border-gray-800">
+              <div className="flex items-center gap-2.5 border border-gray-50 rounded-xl px-4 py-2 dark:border-gray-800">
                 <a href="/attendance">
                   <Button className="px-6 py-3 hover:bg-gray-700 transition-colors duration-300 ease-in-out">
                     출석률
@@ -98,11 +98,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </header>
           {searchVisible && (
-            <div className="bg-gray-950 text-white p-4 flex justify-end fixed w-full top-16 z-40">
+            <div className="bg-gray-950 text-white p-4 flex justify-end fixed w-full top-16 z-40 mt-3">
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-1/3 max-w-md px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full max-w-screen-2xl mx-auto px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           )}
