@@ -64,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header className="bg-gray-950 text-white py-4 px-6 md:px-10 flex items-center justify-between fixed w-full z-50">
             <div className="flex items-center gap-6">
               <Link href="/" className="font-bold text-lg flex items-center gap-2" prefetch={false}>
-                {/* XIcon 대신 FaEye 아이콘 사용 */}
+                {/* XIcon 대신 FaEye 아이콘 사용, gpt 사용*/}
                 <FaEye className="w-10 h-10 mr-3" />
                 National Assembly
               </Link>
