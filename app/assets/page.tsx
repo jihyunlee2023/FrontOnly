@@ -1,17 +1,15 @@
-//app/assets/page.tsx
-
 "use client"
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import Party from '@/components/party';
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { AssetsChart } from '@/components/assetsChart';
 
 export default function Asset() {
   const [selectedFilter, setSelectedFilter] = useState("total")
   const [members, setMembers] = useState([])
   const [assets, setAssets] = useState([])
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const filters = [
     { label: "Total Assets", value: "total" },
@@ -62,19 +60,45 @@ export default function Asset() {
     };
   });
 
+  const handleFilterClick = (value) => {
+    setSelectedFilter(value);
+    setIsMenuOpen(false); // 메뉴를 닫음
+  };
+
+  const getFilterLabel = (value) => {
+    const filter = filters.find((filter) => filter.value === value);
+    return filter ? filter.label : "Total Assets";
+  };
+
   return (
     <div className="p-4">
       <Party />
-      <div className="flex justify-end space-x-2 mb-4">
-        {filters.map((filter) => (
-          <Button
-            key={filter.value}
-            variant={selectedFilter === filter.value ? "default" : "outline"}
-            onClick={() => setSelectedFilter(filter.value)}
+      <div 
+  className="flex justify-between w-40 max-w-xl ml-28 mb-3 relative"
+  onMouseEnter={() => setIsMenuOpen(true)}
+  onMouseLeave={() => setIsMenuOpen(false)}
+>
+        <Button
+          className="bg-black text-white px-6 py-2"
+          variant={isMenuOpen ? "default" : "outline"}
+        >
+          {getFilterLabel(selectedFilter)}
+        </Button>
+        {isMenuOpen && (
+          <div 
+            className="absolute top-full left-0 w-50 bg-white border border-gray-200 rounded-md shadow-lg z-10"
           >
-            {filter.label}
-          </Button>
-        ))}
+            {filters.map((filter) => (
+              <div
+                key={filter.value}
+                onClick={() => handleFilterClick(filter.value)}
+                className={`cursor-pointer px-4 py-2 ${selectedFilter === filter.value ? "bg-gray-100 text-blue-600" : "hover:bg-gray-100"}`}
+              >
+                {filter.label}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <AssetsChart members={combinedData} selectedFilter={selectedFilter} formatCurrency={formatCurrency} />
     </div>
