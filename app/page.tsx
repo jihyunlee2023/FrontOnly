@@ -63,7 +63,7 @@ export default function Page() {
   return (
     <div className="flex flex-col items-center justify-center gap-8 px-6 md:px-10 py-12">
       <div className="flex flex-col items-center gap-4">
-      <img src="/images/new-image.jpg" alt="New Image" className="rounded-lg w-full max-w-screen-md" />
+      <img src="https://www.assembly.go.kr/static/portal/img/bon_meeting.jpg" alt="New Image" className="rounded-lg w-full h-auto max-w-screen-md object-cover" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         <Card>
@@ -71,7 +71,7 @@ export default function Page() {
             <CardHeader>
               <CardTitle>Top 10 by Attendance</CardTitle>
             </CardHeader>
-            <CardContent className="flex">
+            <CardContent className="aspect-[4/3]">
               <HorizontalbarChart data={attendanceData} />
               <h4 className="text-right" style={{ paddingRight: '10pt' }}>Click to View More &gt; </h4> 
             </CardContent>
@@ -82,7 +82,7 @@ export default function Page() {
             <CardHeader>
               <CardTitle>Top 10 by Assets</CardTitle>
             </CardHeader>
-            <CardContent className="flex">
+            <CardContent className="aspect-[4/3]">
               <HorizontalbarChart data={assetsData} />
               <h4 className="text-right" style={{ paddingRight: '10pt' }}>Click to View More &gt; </h4> 
             </CardContent>
@@ -112,13 +112,10 @@ function HorizontalbarChart({ data }) {
         keys={["value"]}
         indexBy="name"
         layout="horizontal"
-        margin={{ top: 0, right: 0, bottom: 40, left: 100 }}
+        margin={{ top: 0, right: 0, bottom: 20, left: 50 }}
         padding={0.3}
         colors={({ id, data }) => partyColors[data.party]}
-        axisBottom={{
-          tickSize: 0,
-          tickPadding: 8,
-        }}
+        axisBottom={null}
         axisLeft={{
           tickSize: 0,
           tickPadding: 16,
