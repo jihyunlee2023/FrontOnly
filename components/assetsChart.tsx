@@ -28,7 +28,8 @@ const partyNames: { [key: number]: string } = {
 
 export function AssetsChart({ members, selectedFilter, formatCurrency }: { members: Member[], selectedFilter: string, formatCurrency: (value: number) => string }) {
   return (
-    <div className="grid gap-4">
+    <div className="flex justify-center px-4">
+      <div className="grid gap-4 max-w-6xl w-full">
       {members.map((member) => (
         <div
           key={member.id}
@@ -51,6 +52,7 @@ export function AssetsChart({ members, selectedFilter, formatCurrency }: { membe
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 }
