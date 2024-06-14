@@ -1,11 +1,10 @@
-//app/layout.tsx
-
 "use client"; // 클라이언트 컴포넌트로 명시
 
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button"; // Button 컴포넌트 import
+import { FaEye } from "react-icons/fa"; // FaEye 아이콘 import
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -50,25 +49,6 @@ function UserIcon(props) {
   );
 }
 
-function XIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
-    </svg>
-  );
-}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [searchVisible, setSearchVisible] = useState(false);
@@ -84,13 +64,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header className="bg-gray-950 text-white py-4 px-6 md:px-10 flex items-center justify-between fixed w-full z-50">
             <div className="flex items-center gap-6">
               <Link href="/" className="font-bold text-lg flex items-center gap-2" prefetch={false}>
-                <XIcon className="flex items-center gap-2 bg-gray-200 rounded-full px-4 py-2" />
+                {/* XIcon 대신 FaEye 아이콘 사용 */}
+                <FaEye className="w-10 h-10 mr-3" />
                 National Assembly
               </Link>
-              <div className="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-2 dark:border-gray-800">
-              <a href="/attendance"><div>출석률</div></a>
-              <a href="/law"><div>법안발의</div></a>
-              <a href="/assets"><div>재산</div></a>
+              <div className="flex items-center gap-2.5 border border-gray-100 rounded-xl px-4 py-2 dark:border-gray-800">
+                <a href="/attendance">
+                  <Button className="px-6 py-3 hover:bg-gray-700 transition-colors duration-300 ease-in-out">
+                    출석률
+                  </Button>
+                </a>
+                <a href="/law">
+                  <Button className="px-5 py-3 hover:bg-gray-700 transition-colors duration-300 ease-in-out">
+                    법안발의
+                  </Button>
+                </a>
+                <a href="/assets">
+                  <Button className="px-8 py-3 hover:bg-gray-700 transition-colors duration-300 ease-in-out">
+                    재산
+                  </Button>
+                </a>
               </div>
             </div>
             <div className="flex items-center gap-4">
