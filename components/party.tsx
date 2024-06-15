@@ -24,6 +24,7 @@ const Party: React.FC<PartyProps> = ({ setSelectedParty }) => {
           <Button
             key={party}
             className={`flex-grow rounded-full px-4 py-2 text-sm font-medium ${isSelected(party) ? 'bg-gray-800 text-gray-200' : 'bg-gray-200 text-gray-800'}`}
+            className={`flex-grow rounded-full px-4 py-2 text-sm font-medium ${isSelected(party) ? 'bg-gray-800 text-gray-200' : 'bg-gray-200 text-gray-800'}`}
             onClick={() => handleClick(party)}
           >
             {party}
