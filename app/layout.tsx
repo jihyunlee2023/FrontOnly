@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation"; // Next.js의 클라이언트 라우터 사용
 import { Button } from "@/components/ui/button"; // Button 컴포넌트 import
-import { FaEye } from "react-icons/fa"; // FaEye 아이콘 import
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -49,12 +49,22 @@ function UserIcon(props) {
   );
 }
 
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [searchVisible, setSearchVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter(); // 클라이언트 라우터
 
   const toggleSearch = () => {
     setSearchVisible(!searchVisible);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    router.push(`/member`);
   };
 
   return (
@@ -64,8 +74,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header className="bg-gray-950 text-white py-4 px-6 md:px-10 flex items-center justify-between fixed w-full z-50">
             <div className="flex items-center gap-6">
               <Link href="/" className="font-bold text-lg flex items-center gap-2" prefetch={false}>
-                {/* XIcon 대신 FaEye 아이콘 사용, gpt 사용*/}
-                <FaEye className="w-10 h-10 mr-3" />
                 National Assembly
               </Link>
               <div className="flex items-center gap-2.5 border border-gray-50 rounded-xl px-4 py-2 dark:border-gray-800">
@@ -99,11 +107,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </header>
           {searchVisible && (
             <div className="bg-gray-950 text-white p-4 flex justify-end fixed w-full top-16 z-40 mt-3">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full max-w-screen-2xl mx-auto px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <form onSubmit={handleSearchSubmit} className="w-full max-w-screen-2xl mx-auto flex">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <Button type="submit" className="ml-2">Search</Button>
+              </form>
             </div>
           )}
           <main className="flex-1 pt-20">{children}</main>

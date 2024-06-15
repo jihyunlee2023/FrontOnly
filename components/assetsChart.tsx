@@ -22,13 +22,18 @@ export interface Member {
 const partyNames: { [key: number]: string } = {
   1: "더불어 민주당",
   2: "국민의 힘",
-  3: "정의당",
-  4: "새로운 선택"
+  3: "조국혁신당",
+  4: "개혁신당",
+  5: "진보당",
+  6: "새로운미래",
+  7: "기본소득당",
+  8: "사회민주당"
 };
 
 export function AssetsChart({ members, selectedFilter, formatCurrency }: { members: Member[], selectedFilter: string, formatCurrency: (value: number) => string }) {
   return (
-    <div className="grid gap-4">
+    <div className="flex justify-center px-4">
+      <div className="grid gap-4 max-w-6xl w-full">
       {members.map((member) => (
         <div
           key={member.id}
@@ -51,6 +56,7 @@ export function AssetsChart({ members, selectedFilter, formatCurrency }: { membe
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 }
